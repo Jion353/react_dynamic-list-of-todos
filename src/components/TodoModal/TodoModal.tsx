@@ -7,7 +7,7 @@ import { getUser } from '../../api';
 type Props = {
   todo: Todo | null;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setTodo: React.Dispatch<React.SetStateAction<boolean>>;
+  setTodo: React.Dispatch<React.SetStateAction<Todo | null>>;
 };
 
 export const TodoModal: React.FC<Props> = ({ setVisible, todo, setTodo }) => {
@@ -51,7 +51,7 @@ export const TodoModal: React.FC<Props> = ({ setVisible, todo, setTodo }) => {
               data-cy="modal-close"
               onClick={() => {
                 setVisible(false);
-                setTodo(null)
+                setTodo(null);
               }}
             />
           </header>
