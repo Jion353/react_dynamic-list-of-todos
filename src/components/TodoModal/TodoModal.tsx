@@ -7,9 +7,10 @@ import { getUser } from '../../api';
 type Props = {
   todo: Todo | null;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setTodo: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const TodoModal: React.FC<Props> = ({ setVisible, todo }) => {
+export const TodoModal: React.FC<Props> = ({ setVisible, todo, setTodo }) => {
   const [isLoad, setIsLoad] = useState(true);
   const [user, setUser] = useState<User | null>(null);
 
@@ -50,6 +51,7 @@ export const TodoModal: React.FC<Props> = ({ setVisible, todo }) => {
               data-cy="modal-close"
               onClick={() => {
                 setVisible(false);
+                setTodo(null)
               }}
             />
           </header>

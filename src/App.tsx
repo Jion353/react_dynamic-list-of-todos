@@ -48,7 +48,7 @@ export const App: React.FC = () => {
         </div>
       </div>
 
-      {isModalSee && <TodoModal setVisible={setIsModalSee} todo={todo} />}
+      {isModalSee && <TodoModal setVisible={setIsModalSee} todo={todo} setTodo={setTodo} />}
     </>
   );
 };
