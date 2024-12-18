@@ -10,16 +10,16 @@ import { Loader } from './components/Loader';
 import { Todo } from './types/Todo';
 
 export const App: React.FC = () => {
-  const [isLoad, setIsLoad] = useState(true);
-  const [isModalSee, setIsModalSee] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [todos, setTodos] = useState<Todo[] | null>(null);
   const [todo, setTodo] = useState<Todo | null>(null);
 
   useEffect(() => {
     setTimeout(() => {
-      setIsLoad(false);
+      setIsLoading(false);
     }, 1000);
-  }, [isLoad]);
+  }, []);
 
   return (
     <>
@@ -33,11 +33,11 @@ export const App: React.FC = () => {
             </div>
 
             <div className="block">
-              {isLoad ? (
+              {isLoading ? (
                 <Loader />
               ) : (
                 <TodoList
-                  setModalVisible={setIsModalSee}
+                  setModalVisible={setIsModalVisible}
                   setSelectedTodo={setTodo}
                   todos={todos}
                   selectedTodo={todo}
@@ -48,8 +48,12 @@ export const App: React.FC = () => {
         </div>
       </div>
 
-      {isModalSee && (
-        <TodoModal setVisible={setIsModalSee} todo={todo} setTodo={setTodo} />
+      {isModalVisible && (
+        <TodoModal
+          setVisible={setIsModalVisible}
+          todo={todo}
+          setTodo={setTodo}
+        />
       )}
     </>
   );

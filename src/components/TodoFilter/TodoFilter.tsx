@@ -12,20 +12,20 @@ export const TodoFilter: React.FC<Props> = ({ setTodos }) => {
 
   useEffect(() => {
     getTodos().then(serverTodos => {
-      let curentTodos: Todo[] | null = serverTodos.filter(todo =>
+      let currentTodos: Todo[] | null = serverTodos.filter(todo =>
         todo.title.toLocaleLowerCase().includes(qwerty.toLocaleLowerCase()),
       );
 
       switch (status) {
         case 'active':
-          curentTodos = curentTodos.filter(todo => !todo.completed);
+          currentTodos = currentTodos.filter(todo => !todo.completed);
           break;
         case 'completed':
-          curentTodos = curentTodos.filter(todo => todo.completed);
+          currentTodos = currentTodos.filter(todo => todo.completed);
           break;
       }
 
-      setTodos(curentTodos);
+      setTodos(currentTodos);
     });
   }, [qwerty, status]);
 

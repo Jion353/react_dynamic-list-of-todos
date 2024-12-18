@@ -11,12 +11,12 @@ type Props = {
 };
 
 export const TodoModal: React.FC<Props> = ({ setVisible, todo, setTodo }) => {
-  const [isLoad, setIsLoad] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     setTimeout(() => {
-      setIsLoad(false);
+      setIsLoading(false);
     }, 1000);
 
     if (todo) {
@@ -25,14 +25,14 @@ export const TodoModal: React.FC<Props> = ({ setVisible, todo, setTodo }) => {
   }, []);
 
   if (!todo) {
-    return;
+    return null;
   }
 
   return (
     <div className="modal is-active" data-cy="modal">
       <div className="modal-background" />
 
-      {isLoad ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div className="modal-card">
